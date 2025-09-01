@@ -22,7 +22,19 @@ export const QuoteDraft = z.object({
   tenorDays: z.number().int().positive(),
   riskNotes: z.string().optional().default(""),
   grade: Grade,
-  pricing: Pricing
+  pricing: Pricing,
+  // New workflow fields (optional to maintain backward compatibility)
+  intermediaryId: z.string().optional(),
+  prospectCompanyAddress: z.string().optional(),
+  businessUnit: z.string().optional(),
+  debtTypeCode: z.string().optional(),
+  depositionCountry: z.string().optional(),
+  durationMonths: z.number().int().nonnegative().optional(),
+  durationDays: z.number().int().nonnegative().optional(),
+  hasContract: z.boolean().optional(),
+  contractNumber: z.string().optional(),
+  subcontractNumber: z.string().optional(),
+  limitNumber: z.string().optional()
 });
 export type QuoteDraft = z.infer<typeof QuoteDraft>;
 
@@ -64,4 +76,18 @@ export const BondRequestPayload = z.object({
   attachments: z.array(z.string()),
   notes: z.string()
 });
-export type BondRequestPayload = z.infer<typeof BondRequestPayload>; 
+export type BondRequestPayload = z.infer<typeof BondRequestPayload>;
+
+// New schemas for the updated workflow
+export const IntermediaryValidationResponse = z.object({
+  intermediaryId: z.string(),
+  registered: z.boolean(),
+  name: z.string().optional()
+});
+export type IntermediaryValidationResponse = z.infer<typeof IntermediaryValidationResponse>;
+
+export const ProspectCompanyAddressPayload = z.object({
+  companyId: z.string(),
+  address: z.string()
+});
+export type ProspectCompanyAddressPayload = z.infer<typeof ProspectCompanyAddressPayload>; 

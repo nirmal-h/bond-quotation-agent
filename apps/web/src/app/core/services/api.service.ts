@@ -6,7 +6,9 @@ import {
   QuoteDraft, 
   SanctionResult, 
   SaveQuotationResult,
-  BondRequestPayload 
+  BondRequestPayload,
+  IntermediaryValidationResponse,
+  ProspectCompanyAddressPayload 
 } from '@bond-quotation/shared';
 
 export interface CompanyGradeResponse {
@@ -55,6 +57,15 @@ export class ApiService {
   private baseUrl = '/api';
 
   constructor(private http: HttpClient) {}
+
+  // New endpoints
+  validateIntermediary(intermediaryId: string): Observable<IntermediaryValidationResponse> {
+    return this.http.post<IntermediaryValidationResponse>(`${this.baseUrl}/irp/intermediary/validate`, { intermediaryId });
+  }
+
+  postCompanyAddress(payload: ProspectCompanyAddressPayload): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/irp/company/address`, payload);
+  }
 
   getCompanyGrade(companyId: string): Observable<CompanyGradeResponse> {
     return this.http.get<CompanyGradeResponse>(`${this.baseUrl}/irp/grade`, {

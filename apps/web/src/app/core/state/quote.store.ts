@@ -137,6 +137,39 @@ export class QuoteStore {
     });
   }
 
+  // New setters for extended workflow
+  updateIntermediaryId(intermediaryId: string) {
+    this._quoteDraft.update(draft => draft ? { ...draft, intermediaryId } : draft);
+  }
+
+  updateProspectCompanyAddress(address: string) {
+    this._quoteDraft.update(draft => draft ? { ...draft, prospectCompanyAddress: address } : draft);
+  }
+
+  updateBusinessUnit(businessUnit: string) {
+    this._quoteDraft.update(draft => draft ? { ...draft, businessUnit } : draft);
+  }
+
+  updateDebtTypeCode(code: string) {
+    this._quoteDraft.update(draft => draft ? { ...draft, debtTypeCode: code } : draft);
+  }
+
+  updateDepositionCountry(country: string) {
+    this._quoteDraft.update(draft => draft ? { ...draft, depositionCountry: country } : draft);
+  }
+
+  updateDuration(months?: number, days?: number) {
+    this._quoteDraft.update(draft => draft ? { ...draft, durationMonths: months ?? draft.durationMonths, durationDays: days ?? draft.durationDays } : draft);
+  }
+
+  updateHasContract(hasContract: boolean) {
+    this._quoteDraft.update(draft => draft ? { ...draft, hasContract } : draft);
+  }
+
+  updateContractInfo(contractNumber?: string, subcontractNumber?: string, limitNumber?: string) {
+    this._quoteDraft.update(draft => draft ? { ...draft, contractNumber: contractNumber ?? draft.contractNumber, subcontractNumber: subcontractNumber ?? draft.subcontractNumber, limitNumber: limitNumber ?? draft.limitNumber } : draft);
+  }
+
   reset() {
     this.initializeDefaultDraft();
   }

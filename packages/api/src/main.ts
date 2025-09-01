@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import { irpRoutes } from './routes/irp.js';
+import irpRoutes from './routes/irp.js';
 import { sanctionRoutes } from './routes/sanction.js';
 import { ragRoutes } from './routes/rag.js';
 import { quotationRoutes } from './routes/quotation.js';
