@@ -1,0 +1,214 @@
+@use '@angular/material' as mat;
+
+// Include the common styles for Angular Material
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$bond-quotation-primary: mat.define-palette(mat.$indigo-palette);
+$bond-quotation-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$bond-quotation-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$bond-quotation-theme: mat.define-light-theme((
+  color: (
+    primary: $bond-quotation-primary,
+    accent: $bond-quotation-accent,
+    warn: $bond-quotation-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+// Dark theme
+$bond-quotation-dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $bond-quotation-primary,
+    accent: $bond-quotation-accent,
+    warn: $bond-quotation-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+// Apply the light theme by default
+@include mat.all-component-themes($bond-quotation-theme);
+
+// Dark theme class
+.dark-theme {
+  @include mat.all-component-colors($bond-quotation-dark-theme);
+  
+  --mat-app-background: #121212;
+  --mat-surface: #1e1e1e;
+  --mat-card-background: #2d2d2d;
+  --mat-text-primary: #ffffff;
+  --mat-text-secondary: #b3b3b3;
+}
+
+// Light theme variables
+:root {
+  --mat-app-background: #fafafa;
+  --mat-surface: #ffffff;
+  --mat-card-background: #ffffff;
+  --mat-text-primary: #212121;
+  --mat-text-secondary: #757575;
+}
+
+// Global styles
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--mat-app-background);
+  color: var(--mat-text-primary);
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Material Design 3 elevation system
+.mat-elevation-z0 {
+  box-shadow: none;
+}
+
+.mat-elevation-z1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.mat-elevation-z2 {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.mat-elevation-z3 {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.mat-elevation-z4 {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+// Dark theme scrollbar
+.dark-theme {
+  ::-webkit-scrollbar-track {
+    background: #2d2d2d;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #555;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #777;
+  }
+}
+
+// Utility classes
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.ml-16 {
+  margin-left: 16px;
+}
+
+.mr-16 {
+  margin-right: 16px;
+}
+
+.p-16 {
+  padding: 16px;
+}
+
+// Responsive utilities
+@media (max-width: 600px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 601px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+// Animation utilities
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+// Respect reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+} 

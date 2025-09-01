@@ -1,0 +1,91 @@
+.quote-panel {
+  max-width: 100%;
+  margin-bottom: 16px;
+}
+
+.quote-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-section h3 {
+  margin: 0 0 16px 0;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.grade-chip {
+  margin-top: 8px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.pricing-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pricing-item.final-rate {
+  grid-column: 1 / -1;
+  background: #f5f5f5;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 4px solid #1976d2;
+}
+
+.pricing-item label {
+  font-size: 0.875rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.pricing-value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.premium-calculation {
+  text-align: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-radius: 8px;
+}
+
+.premium-calculation h4 {
+  margin: 0 0 8px 0;
+  color: #1976d2;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.premium-amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1976d2;
+  margin-bottom: 8px;
+}
+
+.premium-breakdown {
+  font-size: 0.875rem;
+  color: #666;
+  font-family: monospace;
+}
+
+@media (max-width: 600px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+} 

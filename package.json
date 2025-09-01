@@ -1,0 +1,25 @@
+{
+  "name": "bond-quotation-agent",
+  "version": "1.0.0",
+  "description": "Gen-AI powered bond quotation agent with RAG-gated pricing",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --parallel --filter=web dev & pnpm --filter=api dev",
+    "build": "pnpm --filter=web build && pnpm --filter=api build",
+    "test": "pnpm --filter=web test && pnpm --filter=api test",
+    "e2e": "pnpm --filter=web e2e",
+    "seed:rag": "pnpm --filter=api seed:rag",
+    "lint": "pnpm --parallel --filter=web lint --filter=api lint",
+    "format": "prettier --write .",
+    "clean": "pnpm --parallel --filter=web clean --filter=api clean"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+} 
