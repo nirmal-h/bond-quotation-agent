@@ -5,9 +5,12 @@ A production-ready Angular application featuring a Gen-AI powered "Quote Special
 ## ✨ Features
 
 - **🤖 AI-Powered Chat Interface** - Natural language processing for bond quotation requests
+- **🔐 Intermediary Validation** - Secure access control for registered intermediaries
 - **📊 Real-time Quote Builder** - Sticky side panel that updates as you chat
+- **🏢 Company Profile** - Comprehensive company details collection with address validation
 - **🏆 Grade-Based Access Control** - RAG pricing gated by company credit ratings (A, B, C only)
-- **🔒 Automated Sanction Checks** - Compliance validation before finalization
+- **🔒 Automated Sanction Checks** - Early compliance validation with grade display
+- **📝 Contract Management** - Optional existing contract details integration
 - **💾 Smart State Management** - Angular Signals for reactive quote updates
 - **🎨 Modern Material 3 UI** - Light/dark theme support with beautiful components
 - **📱 Responsive Design** - Works seamlessly on desktop and mobile devices
@@ -55,39 +58,62 @@ pnpm dev
 - **Frontend**: http://localhost:4200
 - **Backend API**: http://localhost:3001
 
-## 💬 How to Use
+## �� How to Use
 
-### 1. Start a Quotation
+### 1. Intermediary Validation
 ```
-C-001
+INT-100
 ```
-The agent will fetch your company grade from the IRP system.
+The agent will validate your intermediary registration.
 
-### 2. Request Bond Pricing
+### 2. Company Details
 ```
-Performance bond, $2M, 180 days, US
+Company ID: C-001
+Company Address: 123 Business Street, New York, NY
+Business Unit: Finance Department
 ```
-The agent will parse your request and fetch competitive pricing via RAG.
+The agent will fetch your company grade and run an immediate sanction check.
 
-### 3. Run Sanction Check
+### 3. Additional Details
 ```
-Run sanction check
+Debt Type Code: DT001
+Deposition Country: United States
+Duration: 6 months (or 180 days)
 ```
-Automated compliance validation to ensure regulatory requirements are met.
+The agent will collect essential bond parameters.
 
-### 4. Finalize Quotation
+### 4. Contract Information (if applicable)
 ```
-Finalize and save quotation
+Do you have an existing contract? yes
+Contract Number: CNT001
+Subcontract Number: SUB001
+Limit Number: LMT001
 ```
-Save the quotation and generate a bond request payload.
+Optional contract details if you have an existing agreement.
+
+### 5. View Pricing
+The agent will display pricing data based on your company grade and parameters.
 
 ## 🔄 Complete Workflow
 
+```mermaid
+graph LR
+    A[Intermediary ID] --> B[Company Details]
+    B --> C[Sanction Check]
+    C --> D[Additional Details]
+    D --> E{Has Contract?}
+    E -->|Yes| F[Contract Info]
+    E -->|No| G[Pricing Data]
+    F --> G
 ```
-Company ID → Grade Check → Bond Request → RAG Pricing → Sanction Check → Save Quotation
-    ↓           ↓           ↓           ↓           ↓           ↓
-   IRP        Grade      RAG         Pricing     Compliance   Final Quote
-```
+
+Key Steps:
+1. **Intermediary Validation** - Verify registered intermediary
+2. **Company Details** - ID, Address, Business Unit
+3. **Sanction & Grade** - Immediate compliance check
+4. **Additional Details** - Debt type, country, duration
+5. **Contract Info** - Optional existing contract details
+6. **Pricing Display** - Final rate calculation
 
 ## 🎯 Supported Bond Types
 
